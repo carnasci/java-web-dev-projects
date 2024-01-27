@@ -30,20 +30,65 @@ public class Student {
 
 
     //TODO: Uncomment and complete the getGradeLevel method here:
-//    public String getGradeLevel() {
-//        // Determine the grade level of the student based on numberOfCredits
-//    }
+    public String getGradeLevel(int numberOfCredits) {
+        // Determine the grade level of the student based on numberOfCredits
+        
+
+        if (numberOfCredits < 30) {
+            return  "Freshman";
+        } else if (numberOfCredits < 60) {
+            return "Sophomore";
+        } else if (numberOfCredits < 90) {
+            return "Junior";
+        } else if (numberOfCredits > 89) {
+            return  "Senior";
+        }
+
+    }
 
     // TODO: Complete the addGrade method.
     public void addGrade(int courseCredits, double grade) {
         // Update the appropriate fields: numberOfCredits, gpa
+
+        Double currentTotalQScore = this.gpa * this.numberOfCredits;
+        currentTotalQScore += (courseCredits * grade);
+        this.numberOfCredits += courseCredits;
+        this.gpa = currentTotalQScore/this.numberOfCredits;
+
     }
 
     // TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
     //  than just the class fields.
 
+    public String toString() {
+        String studentReport = String.format("%s is a %s with %s credits and a %s GPA.",
+                this.name, this.getGradeLevel(this.numberOfCredits), this.getNumberOfCredits(), this.getGpa());
+
+        return studentReport;
+    }
+
     // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
     //  Student objects equal.
+
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        if (((Student) obj).getStudentId() == getStudentId()) {
+            return true;
+        }
+
+        return super.equals(obj);
+    }
 
     public String getName() {
         return name;
