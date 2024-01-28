@@ -20,4 +20,24 @@ public class Course {
     // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
     //  Course objects equal.
 
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        if (((Course) obj).topic == this.topic && ((Course) obj).instructor == this.instructor) {
+            return true;
+        }
+
+
+        return super.equals(obj);
+    }
 }
