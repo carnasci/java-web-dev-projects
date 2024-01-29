@@ -3,7 +3,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class GradeBookHashMap {
-
     public HashMap<Integer, String> buildRoster(String name, int Id) {
 
         HashMap<Integer, String> roster = new HashMap<>();
@@ -28,6 +27,7 @@ public class GradeBookHashMap {
 
         return roster;
     }
+
 
     public static void printRoster(HashMap<Integer, String> roster) {
 

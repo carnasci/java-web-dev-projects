@@ -46,6 +46,10 @@ public class ArrayPractice {
         int length = input.nextInt();
 
         printWordOfLength(phrase, length);
+
+        buildRoster();
+
+        printRoster(buildRoster());
     }
 
     int[] intArray = {1, 2, 3, 4, 5, 8};
@@ -82,6 +86,38 @@ public class ArrayPractice {
                 System.out.println(i);
             }
         }
+    }
+
+    public static HashMap<Integer, String> buildRoster() {
+
+        HashMap<Integer, String> roster = new HashMap<>();
+        String student;
+        int id;
+
+        Scanner input = new Scanner(System.in);
+        input.useDelimiter(",");
+
+        System.out.println("Enter Student Id and Student name seperated by a comma: ");
+
+        do {
+            student = input.nextLine();
+            id = input.nextInt();
+
+            if (!student.equals("")) {
+                roster.put(id, student);
+            }
+        } while (!student.equals(""));
+
+
+        return roster;
+    }
+
+    public static void printRoster(HashMap<Integer, String> roster) {
+
+        for (Map.Entry<Integer, String> student : roster.entrySet()) {
+            System.out.println("Class Roster: \nStudent: " + student.getValue() + "ID: " + student.getKey());
+        }
+
     }
 
 }
